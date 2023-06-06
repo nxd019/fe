@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const NoteCreateButton = (props) => {
   const { onSave, onCancel, onCreate, isCreating } = props
@@ -9,7 +9,14 @@ export const NoteCreateButton = (props) => {
     return (
       <div>
         <div>
-          <button onClick={() => onSave(noteContent)}>Save</button>
+          <button
+            onClick={() => {
+              onSave(noteContent)
+              setNoteContent('')
+            }}
+          >
+            Save
+          </button>
           <button onClick={onCancel}>Cancel</button>
         </div>
         <textarea

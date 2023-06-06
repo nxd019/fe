@@ -19,7 +19,12 @@ export const MainApp = (props) => {
   }
 
   const handleOnSaveNote = async (data) => {
-    await axios.post('http://localhost:8080/api/notes', data)
+    const params = {
+      notes: data,
+    }
+
+    console.log("take me some note", params)
+    await axios.post('http://localhost:8080/api/notes', params)
     logJSONData()
   }
 
