@@ -23,7 +23,6 @@ export const MainApp = (props) => {
       notes: data,
     }
 
-    console.log("take me some note", params)
     await axios.post('http://localhost:8080/api/notes', params)
     logJSONData()
   }
@@ -36,12 +35,24 @@ export const MainApp = (props) => {
     setIsCreating(true)
   }
 
+  const handleOnUpdateNote = async (id, data) => {
+    const params = {
+      notes: data,
+    }
+
+    await axios.put(`http://localhost:8080/api/notes/${id}`, params) // using string template
+    // await axios.put('http://localhost:8080/api/notes/'+id, params) // using normal string
+    logJSONData()
+  }
+
   return (
     <div className="note-wrapper">
       {notes.map((note) => (
         <div className="note" key={note.id}>
           <div className="header">
             <button onClick={() => onAddNew()}>+</button>
+            <button>Edit</button>
+
             <button>X</button>
           </div>
           <div className="text">{note.notes}</div>
