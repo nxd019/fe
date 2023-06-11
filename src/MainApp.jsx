@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Test } from './Test'
 import { NoteCreateButton } from './components/NoteCreateButton'
 import './mainApp.css'
 
@@ -45,6 +46,11 @@ export const MainApp = (props) => {
     logJSONData()
   }
 
+  return (
+    <>
+      <Test />
+    </>
+  )
   return (
     <div className="note-wrapper">
       {notes.map((note) => (
